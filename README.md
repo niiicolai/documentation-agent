@@ -12,7 +12,6 @@ An Electron-based desktop application that uses local AI (Ollama) to analyze doc
 - **PDF Export**: Export documentation to PDF with proper formatting
 - **Version History**: Track and restore previous versions
 - **Dark/Light Mode**: Toggle between themes
-- **Frameless Window**: Custom title bar with minimize, maximize, and close controls
 
 ## Screenshots
 
