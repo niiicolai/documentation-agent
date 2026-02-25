@@ -1,0 +1,105 @@
+{
+  "name": "doc-agent",
+  "version": "1.0.0",
+  "description": "Electron app with LangGraph agent and Ollama support",
+  "main": "src/main/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:renderer": "vite build",
+    "start": "electron .",
+    "electron:dev": "npm run build:renderer && electron .",
+    "build": "npm run build:renderer && electron-builder --win",
+    "build:dir": "npm run build:renderer && electron-builder --win --dir"
+  },
+  "keywords": [
+    "electron",
+    "langgraph",
+    "ollama",
+    "ai"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.24",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-log": "^5.2.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.2.1",
+    "vite": "^6.0.7"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.28",
+    "@langchain/langgraph": "^1.1.5",
+    "@langchain/ollama": "^1.2.4",
+    "@uiw/react-md-editor": "^4.0.11",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.0",
+    "langchain": "^1.2.27",
+    "lucide-react": "^0.575.0",
+    "mammoth": "^1.11.0",
+    "markdown-pdf": "^11.0.0",
+    "marked": "^17.0.3",
+    "pdf.js-extract": "^0.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
+    "zod": "^4.3.6"
+  },
+  "build": {
+    "appId": "com.docagent.app",
+    "productName": "Doc Agent",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "node_modules/**/*",
+      "!node_modules/@langchain/**/*",
+      "!node_modules/langchain/**/*",
+      "!node_modules/langgraph-core/**/*",
+      "!node_modules/@langchain-core/**/*",
+      "!node_modules/langsmith/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/@langchain/langgraph",
+        "to": "node_modules/@langchain/langgraph"
+      },
+      {
+        "from": "node_modules/langchain",
+        "to": "node_modules/langchain"
+      },
+      {
+        "from": "node_modules/@langchain/ollama",
+        "to": "node_modules/@langchain/ollama"
+      }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/@langchain/**/*",
+      "node_modules/langchain/**/*",
+      "node_modules/pdf.js-extract/**/*",
+      "node_modules/mammoth/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
