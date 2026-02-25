@@ -1,7 +1,7 @@
 {
   "name": "doc-agent",
   "version": "1.0.0",
-  "description": "Electron app with LangGraph agent and Ollama support",
+  "description": "Electron app with Langchain agents and Ollama support",
   "main": "src/main/main.js",
   "type": "module",
   "scripts": {
